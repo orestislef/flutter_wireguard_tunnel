@@ -1,3 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="gr.orestislef.flutter_wireguard_tunnel">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The VpnService itself comes from com.wireguard.android:tunnel, which
+         declares it with BIND_VPN_SERVICE. The app needs nothing else. -->
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
