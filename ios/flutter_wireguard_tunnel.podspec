@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'flutter_wireguard_tunnel'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'WireGuard tunnel for Flutter.'
   s.description      = <<-DESC
 The app side of flutter_wireguard_tunnel: VPN profile, device key in the

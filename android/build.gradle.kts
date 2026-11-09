@@ -53,6 +53,8 @@ kotlin {
 }
 
 dependencies {
-    // Userspace WireGuard (wireguard-go) with its own VpnService.
-    implementation("com.wireguard.android:tunnel:1.0.20230706")
+    // Userspace WireGuard (wireguard-go) with its own VpnService. Stay on a build
+    // with 16 KB aligned native libraries, Google Play rejects 4 KB ones
+    // (1.0.20230706 and older are 4 KB).
+    implementation("com.wireguard.android:tunnel:1.0.20260102")
 }

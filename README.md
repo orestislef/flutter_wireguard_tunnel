@@ -28,7 +28,7 @@ Other platforms are not supported. `isSupported` is false there and the calls th
 
 ```yaml
 dependencies:
-  flutter_wireguard_tunnel: ^0.1.0
+  flutter_wireguard_tunnel: ^0.1.1
 ```
 
 ### Android
@@ -36,6 +36,8 @@ dependencies:
 Nothing to do. The WireGuard library brings its own `VpnService` (with `BIND_VPN_SERVICE`) and the plugin adds the `INTERNET` permission, both are merged into your manifest by Gradle. You do not need to touch `AndroidManifest.xml`, ProGuard or desugaring settings.
 
 Your app's `minSdk` must be 24 or higher (the Flutter default).
+
+The native WireGuard libraries are 16 KB page aligned, as Google Play requires for apps that target Android 15 and newer. Use 0.1.1 or later: 0.1.0 shipped 4 KB aligned libraries and Play rejects those ("Your app does not support 16 KB memory page sizes").
 
 If you publish on Google Play, apps that use `VpnService` have to fill in the VPN declaration in the Play Console (App content), with what the VPN is used for.
 

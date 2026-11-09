@@ -1,3 +1,7 @@
+## 0.1.1
+
+- Android: WireGuard library `com.wireguard.android:tunnel` 1.0.20260102. Its native libraries are 16 KB page aligned. 0.1.0 used 1.0.20230706, whose libraries are only 4 KB aligned, and Google Play rejects apps with those ("Your app does not support 16 KB memory page sizes"). No API changes.
+
 ## 0.1.0
 
 First release.
