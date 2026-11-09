@@ -1,0 +1,4 @@
+module WireGuardKitGo {
+    umbrella header "wireguard.h"
+    export *
+}
