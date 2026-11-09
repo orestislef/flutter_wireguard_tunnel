@@ -1,0 +1,34 @@
+name: flutter_wireguard_tunnel
+description: >-
+  WireGuard tunnel for Flutter on Android and iOS. Start and stop a tunnel
+  from Dart, split or full, with the private key made and kept on the device.
+version: 0.1.0
+repository: https://github.com/orestislef/flutter_wireguard_tunnel
+issue_tracker: https://github.com/orestislef/flutter_wireguard_tunnel/issues
+topics:
+  - wireguard
+  - vpn
+  - tunnel
+  - network
+
+environment:
+  sdk: ^3.4.0
+  flutter: ">=3.22.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: gr.orestislef.flutter_wireguard_tunnel
+        pluginClass: FlutterWireguardTunnelPlugin
+      ios:
+        pluginClass: FlutterWireguardTunnelPlugin
