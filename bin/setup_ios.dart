@@ -42,7 +42,7 @@ Future<void> main(List<String> args) async {
     return;
   }
   final package = File.fromUri(library).parent.parent;
-  final source = Directory(_join(package.path, 'ios', kitName));
+  final source = Directory(_join(_join(package.path, 'ios'), kitName));
   if (!source.existsSync()) {
     stderr.writeln('$kitName is missing from ${package.path}');
     exitCode = 1;
