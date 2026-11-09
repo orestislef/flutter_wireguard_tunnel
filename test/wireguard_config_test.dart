@@ -51,9 +51,10 @@ void main() {
     });
 
     test('allowed IPs cannot be empty', () {
-      expect(config.copyWith(allowedIps: []).validate(), contains('allowedIps'));
       expect(
-          config.copyWith(allowedIps: [' ']).validate(), contains('allowedIps'));
+          config.copyWith(allowedIps: []).validate(), contains('allowedIps'));
+      expect(config.copyWith(allowedIps: [' ']).validate(),
+          contains('allowedIps'));
     });
 
     test('optional keys are checked when given', () {
@@ -76,13 +77,11 @@ void main() {
 
   group('toMap', () {
     test('trims and splits', () {
-      final map = config
-          .copyWith(
-            address: ' 10.8.0.2/32, fd00::2/128 ',
-            allowedIps: [' 10.8.0.0/24', '', 'fd00::/64 '],
-            dns: ['1.1.1.1 '],
-          )
-          .toMap();
+      final map = config.copyWith(
+        address: ' 10.8.0.2/32, fd00::2/128 ',
+        allowedIps: [' 10.8.0.0/24', '', 'fd00::/64 '],
+        dns: ['1.1.1.1 '],
+      ).toMap();
       expect(map['address'], ['10.8.0.2/32', 'fd00::2/128']);
       expect(map['allowedIps'], ['10.8.0.0/24', 'fd00::/64']);
       expect(map['dns'], ['1.1.1.1']);

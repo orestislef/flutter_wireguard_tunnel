@@ -110,10 +110,9 @@ class WireGuardConfig {
       presharedKey: peer['presharedkey'],
       endpoint: required(peer, 'endpoint', 'Endpoint'),
       allowedIps: list(required(peer, 'allowedips', 'AllowedIPs')),
-      persistentKeepalive:
-          keepalive == null || keepalive.toLowerCase() == 'off'
-              ? 0
-              : number(keepalive, 0),
+      persistentKeepalive: keepalive == null || keepalive.toLowerCase() == 'off'
+          ? 0
+          : number(keepalive, 0),
     );
   }
 
@@ -176,10 +175,8 @@ class WireGuardConfig {
             .toList(),
         'serverPublicKey': serverPublicKey.trim(),
         'endpoint': endpoint.trim(),
-        'allowedIps': allowedIps
-            .map((e) => e.trim())
-            .where((e) => e.isNotEmpty)
-            .toList(),
+        'allowedIps':
+            allowedIps.map((e) => e.trim()).where((e) => e.isNotEmpty).toList(),
         'dns': dns.map((e) => e.trim()).where((e) => e.isNotEmpty).toList(),
         'privateKey': privateKey?.trim(),
         'presharedKey': presharedKey?.trim(),
@@ -194,7 +191,8 @@ class WireGuardConfig {
       'keepalive $persistentKeepalive)';
 
   static final _key = RegExp(r'^[A-Za-z0-9+/]{42}[AEIMQUYcgkosw480]=$');
-  static final _endpoint = RegExp(r'^(\[[0-9A-Fa-f:.]+\]|[^\s:\[\]]+):\d{1,5}$');
+  static final _endpoint =
+      RegExp(r'^(\[[0-9A-Fa-f:.]+\]|[^\s:\[\]]+):\d{1,5}$');
 
   static bool _isKey(String value) => _key.hasMatch(value.trim());
 }

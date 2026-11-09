@@ -20,21 +20,23 @@ class PacketTunnelProvider: WireGuardTunnelProvider {}
 Future<void> main(List<String> args) async {
   if (args.contains('-h') || args.contains('--help')) {
     stdout.writeln('Usage: dart run flutter_wireguard_tunnel:setup_ios');
-    stdout.writeln('Copies $kitName into ios/ of the app in the current folder.');
+    stdout
+        .writeln('Copies $kitName into ios/ of the app in the current folder.');
     return;
   }
 
   final app = Directory.current;
   final ios = Directory(_join(app.path, 'ios'));
-  if (!File(_join(app.path, 'pubspec.yaml')).existsSync() || !ios.existsSync()) {
+  if (!File(_join(app.path, 'pubspec.yaml')).existsSync() ||
+      !ios.existsSync()) {
     stderr.writeln('Run this from your Flutter app folder, the one with '
         'pubspec.yaml and ios/.');
     exitCode = 1;
     return;
   }
 
-  final library = await Isolate.resolvePackageUri(
-      Uri.parse('package:flutter_wireguard_tunnel/flutter_wireguard_tunnel.dart'));
+  final library = await Isolate.resolvePackageUri(Uri.parse(
+      'package:flutter_wireguard_tunnel/flutter_wireguard_tunnel.dart'));
   if (library == null) {
     stderr.writeln('flutter_wireguard_tunnel is not a dependency of this app. '
         'Add it to pubspec.yaml and run flutter pub get first.');
@@ -114,5 +116,6 @@ void _copy(Directory from, Directory to) {
   }
 }
 
-String _join(String a, String b) =>
-    a.endsWith(Platform.pathSeparator) ? '$a$b' : '$a${Platform.pathSeparator}$b';
+String _join(String a, String b) => a.endsWith(Platform.pathSeparator)
+    ? '$a$b'
+    : '$a${Platform.pathSeparator}$b';

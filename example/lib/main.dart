@@ -94,13 +94,13 @@ PersistentKeepalive = 25
   }
 
   Future<void> _start() => _run(() async {
-        final config = WireGuardConfig.parse(_config.text);
-        if (!await _tunnel.prepare()) {
-          _message = 'VPN permission not given';
-          return;
-        }
-        await _tunnel.start(config);
-      });
+    final config = WireGuardConfig.parse(_config.text);
+    if (!await _tunnel.prepare()) {
+      _message = 'VPN permission not given';
+      return;
+    }
+    await _tunnel.start(config);
+  });
 
   Future<void> _stop() => _run(_tunnel.stop);
 

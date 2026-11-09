@@ -85,10 +85,12 @@ void main() {
   });
 
   test('platform errors become WireGuardException', () async {
-    reply('up', (_) => throw PlatformException(
-          code: 'not_prepared',
-          message: 'VPN permission not given',
-        ));
+    reply(
+        'up',
+        (_) => throw PlatformException(
+              code: 'not_prepared',
+              message: 'VPN permission not given',
+            ));
     await expectLater(
       tunnel.start(config),
       throwsA(isA<WireGuardException>()
