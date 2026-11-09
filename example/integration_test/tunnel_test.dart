@@ -11,12 +11,14 @@ import 'package:integration_test/integration_test.dart';
 //   flutter test integration_test/tunnel_test.dart \
 //     --dart-define=WG_TEST_SERVER=10.0.2.2:8080
 //
-// The server answers GET /peer?key=<public key> (or ?generate=1) with
-// address, serverPublicKey and endpoint (plus privateKey and presharedKey
-// when it made the keys), and serves "hello from the tunnel" on
-// 10.8.0.1:80 inside the tunnel. The VPN permission has to be given before,
-// on Android for example with
-// adb shell appops set <application id> ACTIVATE_VPN allow
+// tool/wg_test_server is that server (go run . in that folder). It answers
+// GET /peer?key=<public key> (or ?generate=1) with address, serverPublicKey
+// and endpoint (plus privateKey and presharedKey when it made the keys), and
+// serves "hello from the tunnel" on 10.8.0.1:80 inside the tunnel.
+//
+// The VPN permission has to be given first. On the Android emulator:
+// adb shell cmd appops set --uid <application id> ACTIVATE_VPN allow
+// On iOS tap Allow when the first test asks to add the VPN configuration.
 const server = String.fromEnvironment('WG_TEST_SERVER');
 const inside = 'http://10.8.0.1/';
 
