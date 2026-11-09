@@ -11,6 +11,13 @@ import 'package:integration_test/integration_test.dart';
 //   flutter test integration_test/tunnel_test.dart \
 //     --dart-define=WG_TEST_SERVER=10.0.2.2:8080
 //
+// flutter test cannot start an app on an iPhone that shows up as wireless
+// (even with the cable in). Use flutter drive there:
+//
+//   flutter drive --driver=test_driver/integration_test.dart \
+//     --target=integration_test/tunnel_test.dart \
+//     --dart-define=WG_TEST_SERVER=192.168.1.20:8080
+//
 // tool/wg_test_server is that server (go run . in that folder). It answers
 // GET /peer?key=<public key> (or ?generate=1) with address, serverPublicKey
 // and endpoint (plus privateKey and presharedKey when it made the keys), and

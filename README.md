@@ -223,6 +223,10 @@ WireGuard brings its own encryption (Curve25519, ChaCha20-Poly1305, BLAKE2s), no
 
 If the VPN is what your app offers to its users, App Review also asks that it uses the system VPN APIs (this package does) and that the developer account belongs to an organization, not an individual.
 
+## Tests
+
+`flutter test` runs the Dart tests. The end to end tests in `example/integration_test/tunnel_test.dart` bring a real tunnel up on a device, against the small WireGuard server in `tool/wg_test_server` (Go, nothing else to install). The comments at the top of both files say how to run them on the Android emulator and on an iPhone.
+
 ## Updating WireGuard
 
 The iOS WireGuard library is prebuilt in `ios/WireGuardTunnelKit/WireGuardKitGo.xcframework` from wireguard-apple at tag 1.0.16-27. To rebuild it, run `ios/WireGuardTunnelKit/build_libwg.sh` on a Mac with Xcode. Android uses `com.wireguard.android:tunnel` from Maven Central.
